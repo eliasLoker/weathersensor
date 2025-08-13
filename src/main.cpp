@@ -9,16 +9,14 @@ void setup() {
     M5.begin(cfg);
     Serial.begin(115200);
 
-    // Настройка дисплея
-    M5.Display.setRotation(3); // 0 - вертикально, 1 - горизонтально
-    M5.Display.setTextSize(2); // Увеличиваем размер текста
-    M5.Display.setTextColor(TFT_WHITE, TFT_BLACK); // Устанавливаем цвет текста и фона
+    M5.Display.setRotation(3);
+    M5.Display.setTextSize(2);
+    M5.Display.setTextColor(TFT_WHITE, TFT_BLACK);
 
     delay(1000);
 
     Serial.println("Starting SHT31 sensor...");
 
-    // Initialize SHT31 sensor
     if (!sht31.begin(0x44)) {
         Serial.println("Error: SHT31 not found. Check connection.");
     } else {
@@ -30,7 +28,6 @@ void loop() {
     float t = sht31.readTemperature();
     float h = sht31.readHumidity();
     
-    // Check if SHT31 readings are valid
     if (isnan(t) || isnan(h)) {
         M5.Display.clear();
         M5.Display.setCursor(0, 0);
@@ -47,5 +44,5 @@ void loop() {
 
     Serial.printf("Temperature: %.2f C | Humidity: %.2f %%\n", t, h);
 
-    delay(1000);
+    delay(5000);
 }
