@@ -36,7 +36,7 @@ void setup() {
         animateText("Error QMP6988!");
         while (1) delay(1);
     } else {
-        animateText("All sensors ready!");
+        animateText("All sensors are ready!");
     }
     delay(2000);
 }
